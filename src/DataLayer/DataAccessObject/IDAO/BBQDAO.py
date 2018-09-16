@@ -63,7 +63,7 @@ class BBQDAO(DAO):
             cursor = conn.connection.cursor()
             query = 'UPDATE BBQ SET name = %s, model = %s, photo= %s, latitude = %s, longitude = %s WHERE idBBQ = %s'
             response = cursor.execute(query,
-                                      (bbq.name, bbq.lastName, bbq.age, bbq.latitude, bbq.longitude, bbq.id,))
+                                      (bbq.name, bbq.model, bbq.photo, bbq.latitude, bbq.longitude, bbq.id))
             if response:
                 conn.connection.commit()
                 return bbq

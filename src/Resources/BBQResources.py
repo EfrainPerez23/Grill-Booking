@@ -83,6 +83,56 @@ class BBQResources(Resource):
         return {'message': message, 'data': data}, status
 
     @jwt_required()
+    def put(self, id):
+        _help = 'This field cannot be blank!'
+        data = BodyParser.bodyParser([
+            {
+                'key': 'name',
+                '_type': str,
+                '_required': True,
+                '_help': _help
+            },
+            {
+                'key': 'model',
+                '_type': str,
+                '_required': True,
+                '_help': _help
+            },
+            {
+                'key': 'photo',
+                '_type': str,
+                '_required': True,
+                '_help': _help
+            },
+            {
+                'key': 'latitude',
+                '_type': float,
+                '_required': True,
+                '_help': _help
+            },
+            {
+                'key': 'longitude',
+                '_type': float,
+                '_required': True,
+                '_help': _help
+            },
+
+        ])
+        message = 'Not allowed'
+        status = 405
+        if id.isdigit():
+            bbqToUpdate = BBQ(int(id), data['name'], data['model'], data['photo'], data['latitude'], data['longitude'])
+
+            from DataLayer.DataAccessObject.IDAO.BBQDAO import BBQDAO
+            bbqDAO = BBQDAO()
+            status = 400
+            if bbqDAO.update(bbqToUpdate):
+                message = 'BBQ updated'
+                status = 201
+
+        return {'message': message, 'data': data}, status
+
+    @jwt_required()
     def delete(self, id):
         message = 'User does not exist to delete'
         status = 400

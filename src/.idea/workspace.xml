@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4b5dbf75-7bdf-44a0-be41-ebd479f2e9ea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/DataLayer/DataAccessObject/IDAO/BBQDAO.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Resources/BBQResources.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Diseno/DB/DB.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/../Diseno/DB/DB.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Diseno/DB/DB.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/../Diseno/DB/DB.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Diseno/DB/bbq.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Diseno/DB/bbq.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataLayer/DataAccessObject/IDAO/BBQDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataLayer/DataAccessObject/IDAO/BBQDAO.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Resources/BBQResources.py" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/BBQResources.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,13 +40,13 @@
         <counts>
           <entry key="cfg" value="20" />
           <entry key="gitignore" value="18" />
-          <entry key="py" value="2323" />
+          <entry key="py" value="2400" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="38" />
-          <entry key="Python" value="2323" />
+          <entry key="Python" value="2400" />
         </counts>
       </usages-collector>
     </session>
@@ -76,25 +71,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Resources/BBQResources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
+            <state relative-caret-position="269">
+              <caret line="126" column="21" selection-start-line="126" selection-start-column="21" selection-end-line="126" selection-end-column="21" />
               <folding>
                 <element signature="e#1#39#0" expanded="true" />
-                <marker date="1537137015276" expanded="true" signature="195:196" ph="..." />
-                <marker date="1537137015276" expanded="true" signature="195:201" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Resources/UserResources.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="177" column="4" selection-start-line="177" selection-start-column="4" selection-end-line="191" selection-end-column="18" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-                <marker date="1537090076209" expanded="true" signature="1210:1216" ph="..." />
+                <marker date="1537139188004" expanded="true" signature="195:196" ph="..." />
+                <marker date="1537139188004" expanded="true" signature="195:201" ph="..." />
               </folding>
             </state>
           </provider>
@@ -103,10 +85,23 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DataLayer/DataAccessObject/IDAO/BBQDAO.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="24" column="74" selection-start-line="24" selection-start-column="74" selection-end-line="24" selection-end-column="74" />
+            <state relative-caret-position="267">
+              <caret line="65" column="106" selection-start-line="65" selection-start-column="106" selection-end-line="65" selection-end-column="106" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Resources/UserResources.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1296">
+              <caret line="115" column="4" selection-start-line="115" selection-start-column="4" selection-end-line="175" selection-end-column="57" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+                <marker date="1537090076209" expanded="true" signature="1210:1216" ph="..." />
               </folding>
             </state>
           </provider>
@@ -300,13 +295,13 @@
       <window_info id="Favorites" order="0" sideWeight="0.50342464" side_tool="true" weight="0.181388" />
       <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49657536" visible="true" weight="0.25593472" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.3299075" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="1" sideWeight="0.50074184" side_tool="true" visible="true" weight="0.32980332" />
-      <window_info anchor="bottom" id="Python Console" order="2" weight="0.3299075" />
+      <window_info anchor="bottom" id="Terminal" order="0" weight="0.19062027" />
+      <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50074184" side_tool="true" weight="0.32980332" />
+      <window_info anchor="bottom" id="Python Console" order="2" weight="0.32980332" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49925816" visible="true" weight="0.32980332" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.49925816" visible="true" weight="0.32980332" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.30862328" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -418,8 +413,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/UserResources.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="177" column="4" selection-start-line="177" selection-start-column="4" selection-end-line="191" selection-end-column="18" />
+        <state relative-caret-position="1296">
+          <caret line="115" column="4" selection-start-line="115" selection-start-column="4" selection-end-line="175" selection-end-column="57" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
             <marker date="1537090076209" expanded="true" signature="1210:1216" ph="..." />
@@ -429,20 +424,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Resources/BBQResources.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="92" column="30" selection-start-line="92" selection-start-column="30" selection-end-line="92" selection-end-column="30" />
+        <state relative-caret-position="269">
+          <caret line="126" column="21" selection-start-line="126" selection-start-column="21" selection-end-line="126" selection-end-column="21" />
           <folding>
             <element signature="e#1#39#0" expanded="true" />
-            <marker date="1537137015276" expanded="true" signature="195:196" ph="..." />
-            <marker date="1537137015276" expanded="true" signature="195:201" ph="..." />
+            <marker date="1537139188004" expanded="true" signature="195:196" ph="..." />
+            <marker date="1537139188004" expanded="true" signature="195:201" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DataLayer/DataAccessObject/IDAO/BBQDAO.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="24" column="74" selection-start-line="24" selection-start-column="74" selection-end-line="24" selection-end-column="74" />
+        <state relative-caret-position="267">
+          <caret line="65" column="106" selection-start-line="65" selection-start-column="106" selection-end-line="65" selection-end-column="106" />
           <folding>
             <element signature="e#0#67#0" expanded="true" />
           </folding>
