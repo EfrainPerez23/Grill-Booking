@@ -1,6 +1,6 @@
 from Util.BodyParser import BodyParser
 from flask_restful import Resource
-# from flask_jwt import jwt_required
+from flask_jwt import jwt_required, current_identity
 from DataLayer.Models.User import User
 from DataLayer.DataAccessObject.Transactions.Transactions import Transactions
 from DataLayer.DataAccessObject.IDAO.UserDAO import UserDAO
@@ -12,17 +12,24 @@ hashlib.sha256()
 
 class UserResources(Resource):
 
+    @jwt_required()
     def get(self, id=None):
         userDAO = UserDAO()
         message = 'User does not exist'
         status = 400
         data = None
         if id:
-            user = userDAO.read(id)
-            if user:
-                message = 'User exists'
-                status = 200
-                data = user.json()
+            if id.isdigit() and current_identity.id == int(id):
+                user = userDAO.read(id)
+
+                if user:
+                    message = 'User exists'
+                    status = 200
+                    data = user.json()
+            else:
+                message = 'Not allowed'
+                status = 405
+
         else:
             users = userDAO.readALL()
             message = 'Users do not exist'
@@ -91,18 +98,22 @@ class UserResources(Resource):
         userDAO = UserDAO()
         transaction = Transactions()
         userVerification = transaction.findUserByEmail(newUser.email)
+        status = 400
+        message = 'User not created'
         if userVerification:
-            return {'message': 'User already exists with that email', 'data': {
+            message = 'User already exists with that email'
+            return {'message': message, 'data': {
                 'name': userVerification.name,
                 'lastName': userVerification.lastName,
                 'email': userVerification.email
-            }}, 400
+            }}, status
 
         if userDAO.create(newUser):
-            return {'message': 'User created', 'data': data}, 201
+            message = 'User created'
+            status = 201
+        return {'message': message, 'data': data}, status
 
-        return {'message': 'User not created', 'data': data}, 400
-
+    @jwt_required()
     def put(self, id=None):
         _help = 'This field cannot be blank!'
         data = BodyParser.bodyParser([
@@ -150,23 +161,32 @@ class UserResources(Resource):
             },
 
         ])
-        userToUpdate = User(data['id'], data['name'], data['lastName'], data['age'], data['email'], None,
-                            data['latitude'], data['longitude'])
+        message = 'Not allowed'
+        status = 405
+        if current_identity.id == data['id']:
+            userToUpdate = User(data['id'], data['name'], data['lastName'], data['age'], data['email'], None,
+                                data['latitude'], data['longitude'])
 
-        userDAO = UserDAO()
+            userDAO = UserDAO()
+            status = 400
+            if userDAO.update(userToUpdate):
+                message = 'User updated'
+                status = 201
 
-        if userDAO.update(userToUpdate):
-            return {'message': 'User updated', 'data': data}, 201
+        return {'message': message, 'data': data}, status
 
-        return {'message': 'User not updated', 'data': data}, 400
-
+    @jwt_required()
     def delete(self, id):
-        userDAO = UserDAO()
         message = 'User does not exist to delete'
         status = 400
-        if userDAO.delete(id):
-            message = 'User deleted successfully'
-            status = 202
+        if id.isdigit() and current_identity.id == int(id):
+            userDAO = UserDAO()
+            if userDAO.delete(id):
+                message = 'User deleted successfully'
+                status = 202
+        else:
+            message = 'Not allowed'
+            status = 405
         return {'message': message, 'data': {
             'id': id
         }}, status
