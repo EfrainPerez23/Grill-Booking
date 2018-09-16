@@ -24,6 +24,7 @@ api = Api(app)
 if __name__ == '__main__':
     from Auth.Security import identity, authenticate
     from Resources.UserResources import UserResources
+    from Resources.BBQResources import BBQResources
 
     jwt = JWT(app, authenticate, identity)
 
@@ -37,6 +38,7 @@ if __name__ == '__main__':
             'email': identity.email
         }))
     api.add_resource(UserResources, '/user', '/user/<id>', endpoint='user')
+    api.add_resource(BBQResources, '/bbq', '/bbq/<id>', endpoint='bbq')
     app.run()
 
 
