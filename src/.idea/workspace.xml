@@ -4,16 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/app.py" line="21" mnemonic="8" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b5dbf75-7bdf-44a0-be41-ebd479f2e9ea" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Diseno/DB/DB.mwb" beforeDir="false" afterPath="$PROJECT_DIR$/../Diseno/DB/DB.mwb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Diseno/DB/DB.mwb.bak" beforeDir="false" afterPath="$PROJECT_DIR$/../Diseno/DB/DB.mwb.bak" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Diseno/DB/bbq.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../Diseno/DB/bbq.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/efrain.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/efrain.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataLayer/DataAccessObject/IDAO/BBQDAO.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataLayer/DataAccessObject/IDAO/BBQDAO.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataLayer/Models/BBQ.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataLayer/Models/BBQ.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resources/BBQResources.py" beforeDir="false" afterPath="$PROJECT_DIR$/Resources/BBQResources.py" afterDir="false" />
-    </list>
+    <list default="true" id="4b5dbf75-7bdf-44a0-be41-ebd479f2e9ea" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DataLayer/DataAccessObject/IDAO/BBQDAO.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="24" column="45" lean-forward="true" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+            <state relative-caret-position="157">
+              <caret line="25" column="75" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
               </folding>
@@ -301,13 +292,13 @@
       <window_info id="Favorites" order="0" sideWeight="0.50342464" side_tool="true" weight="0.181388" />
       <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49657536" visible="true" weight="0.181388" />
       <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" weight="0.2631038" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="0" visible="true" weight="0.2631038" />
       <window_info anchor="bottom" id="Event Log" order="1" sideWeight="0.50074184" side_tool="true" weight="0.32980332" />
       <window_info anchor="bottom" id="Python Console" order="2" weight="0.32887974" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" />
       <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" sideWeight="0.49925816" visible="true" weight="0.32887974" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49925816" weight="0.32887974" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.30832475" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -441,8 +432,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataLayer/DataAccessObject/IDAO/BBQDAO.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="24" column="45" lean-forward="true" selection-start-line="24" selection-start-column="45" selection-end-line="24" selection-end-column="45" />
+        <state relative-caret-position="157">
+          <caret line="25" column="75" selection-start-line="25" selection-start-column="75" selection-end-line="25" selection-end-column="75" />
           <folding>
             <element signature="e#0#67#0" expanded="true" />
           </folding>
