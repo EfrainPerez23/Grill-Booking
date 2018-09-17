@@ -11,7 +11,7 @@ class BBQDAO(DAO):
             conn = DBManager()
             cursor = conn.connection.cursor()
             response = cursor.callproc('rentBBQ', (
-                bbq.name, bbq.model, bbq.photo, bbq.latitude, bbq.longitude, current_identity.id))
+                bbq.name, bbq.model, bbq.photo, bbq.latitude, bbq.longitude, bbq.favorite, current_identity.id))
             if response:
                 conn.connection.commit()
                 return bbq
@@ -19,6 +19,7 @@ class BBQDAO(DAO):
         return None
 
     def delete(self, _id):
+        deleted = False
         if _id:
             conn = DBManager()
             cursor = conn.connection.cursor()
@@ -26,19 +27,19 @@ class BBQDAO(DAO):
             response = cursor.execute(query, (_id, current_identity.id))
             if response:
                 conn.connection.commit()
-                return True
-        return False
+                deleted = True
+        return deleted
 
     def read(self, _id):
         if _id:
             conn = DBManager()
             cursor = conn.connection.cursor()
-            query = 'SELECT idBBQ, name, model, photo, latitude, longitude FROM BBQ WHERE idBBQ = %s'
+            query = 'SELECT idBBQ, name, model, photo, latitude, longitude, favorite FROM BBQ WHERE idBBQ = %s'
             cursor.execute(query, (_id,))
             firstBBQ = cursor.fetchone()
             if firstBBQ:
                 bbq = BBQ(firstBBQ['idBBQ'], firstBBQ['name'], firstBBQ['model'], firstBBQ['photo'],
-                          firstBBQ['latitude'], firstBBQ['longitude'])
+                          firstBBQ['latitude'], firstBBQ['longitude'], bool(firstBBQ['favorite']))
                 return bbq
             return firstBBQ
         return None
@@ -46,13 +47,13 @@ class BBQDAO(DAO):
     def readALL(self):
         conn = DBManager()
         cursor = conn.connection.cursor()
-        query = 'SELECT idBBQ, name, model, photo, latitude, longitude FROM BBQ'
+        query = 'SELECT idBBQ, name, model, photo, latitude, longitude, favorite FROM BBQ'
         cursor.execute(query)
         bbqs = cursor.fetchall()
         if bbqs:
             return [
                 BBQ(bbq['idBBQ'], bbq['name'], bbq['model'], bbq['photo'],
-                    bbq['latitude'], bbq['longitude']).json()
+                    bbq['latitude'], bbq['longitude'], bool(bbq['favorite'])).json()
                 for bbq in bbqs
             ]
         return []
@@ -61,9 +62,9 @@ class BBQDAO(DAO):
         if bbq and bbq.isValid():
             conn = DBManager()
             cursor = conn.connection.cursor()
-            query = 'UPDATE BBQ SET name = %s, model = %s, photo= %s, latitude = %s, longitude = %s WHERE idBBQ = %s'
+            query = 'UPDATE BBQ SET name = %s, model = %s, photo= %s, latitude = %s, longitude = %s, favorite = %s WHERE idBBQ = %s'
             response = cursor.execute(query,
-                                      (bbq.name, bbq.model, bbq.photo, bbq.latitude, bbq.longitude, bbq.id))
+                                      (bbq.name, bbq.model, bbq.photo, bbq.latitude, bbq.longitude, bbq.favorite, bbq.id))
             if response:
                 conn.connection.commit()
                 return bbq

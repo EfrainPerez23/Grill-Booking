@@ -67,10 +67,16 @@ class BBQResources(Resource):
                 '_required': True,
                 '_help': _help
             },
+            {
+                'key': 'favorite',
+                '_type': bool,
+                '_required': True,
+                '_help': _help
+            }
 
         ])
 
-        newBBQ = BBQ(None, data['name'], data['model'], data['photo'], data['latitude'], data['longitude'])
+        newBBQ = BBQ(None, data['name'], data['model'], data['photo'], data['latitude'], data['longitude'], data['favorite'])
         from DataLayer.DataAccessObject.IDAO.BBQDAO import BBQDAO
         bbq = BBQDAO()
         status = 400
@@ -116,12 +122,18 @@ class BBQResources(Resource):
                 '_required': True,
                 '_help': _help
             },
+            {
+                'key': 'favorite',
+                '_type': bool,
+                '_required': True,
+                '_help': _help
+            }
 
         ])
         message = 'Not allowed'
         status = 405
         if id.isdigit():
-            bbqToUpdate = BBQ(int(id), data['name'], data['model'], data['photo'], data['latitude'], data['longitude'])
+            bbqToUpdate = BBQ(int(id), data['name'], data['model'], data['photo'], data['latitude'], data['longitude'], data['favorite'])
 
             from DataLayer.DataAccessObject.IDAO.BBQDAO import BBQDAO
             bbqDAO = BBQDAO()
