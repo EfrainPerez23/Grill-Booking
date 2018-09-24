@@ -3,7 +3,7 @@ from DataLayer.DataAccessObject.Dependencies.DTO import DTO
 
 class BBQ(DTO):
 
-    def __init__(self, _id, name, model, photo, latitude, longitude, favorite):
+    def __init__(self, _id, name, model, photo, latitude, longitude, favorite, placeId):
         self.id = _id
         self.name = name
         self.model = model
@@ -11,6 +11,7 @@ class BBQ(DTO):
         self.latitude = latitude
         self.longitude = longitude
         self.favorite = favorite
+        self.placeId = placeId
 
     def isValid(self):
         if self.name and self.model:
@@ -25,5 +26,6 @@ class BBQ(DTO):
             'photo': self.photo,
             'latitude': self.latitude,
             'longitude': self.longitude,
-            'favorite': self.favorite
+            'favorite': self.favorite,
+            'placeId': self.placeId
         }
