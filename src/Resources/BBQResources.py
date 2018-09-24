@@ -72,11 +72,17 @@ class BBQResources(Resource):
                 '_type': bool,
                 '_required': True,
                 '_help': _help
+            },
+            {
+                'key': 'placeId',
+                '_type': str,
+                '_required': True,
+                '_help': _help
             }
 
         ])
 
-        newBBQ = BBQ(None, data['name'], data['model'], data['photo'], data['latitude'], data['longitude'], data['favorite'])
+        newBBQ = BBQ(None, data['name'], data['model'], data['photo'], data['latitude'], data['longitude'], data['favorite'], data['placeId'])
         from DataLayer.DataAccessObject.IDAO.BBQDAO import BBQDAO
         bbq = BBQDAO()
         status = 400
@@ -127,13 +133,19 @@ class BBQResources(Resource):
                 '_type': bool,
                 '_required': True,
                 '_help': _help
+            },
+            {
+                'key': 'placeId',
+                '_type': str,
+                '_required': True,
+                '_help': _help
             }
 
         ])
         message = 'Not allowed'
         status = 405
         if id.isdigit():
-            bbqToUpdate = BBQ(int(id), data['name'], data['model'], data['photo'], data['latitude'], data['longitude'], data['favorite'])
+            bbqToUpdate = BBQ(int(id), data['name'], data['model'], data['photo'], data['latitude'], data['longitude'], data['favorite'], data['placeId'])
 
             from DataLayer.DataAccessObject.IDAO.BBQDAO import BBQDAO
             bbqDAO = BBQDAO()
@@ -146,7 +158,7 @@ class BBQResources(Resource):
 
     @jwt_required()
     def delete(self, id):
-        message = 'User does not exist to delete'
+        message = 'BBQ does not exist to delete'
         status = 400
         if id.isdigit() and current_identity.id == int(id):
             from DataLayer.DataAccessObject.IDAO.BBQDAO import BBQDAO

@@ -11,7 +11,7 @@ class BBQDAO(DAO):
             conn = DBManager()
             cursor = conn.connection.cursor()
             response = cursor.callproc('rentBBQ', (
-                bbq.name, bbq.model, bbq.photo, bbq.latitude, bbq.longitude, bbq.favorite, current_identity.id))
+                bbq.name, bbq.model, bbq.photo, bbq.latitude, bbq.longitude, bbq.favorite, bbq.placeId, current_identity.id))
             if response:
                 conn.connection.commit()
                 return bbq
@@ -34,12 +34,12 @@ class BBQDAO(DAO):
         if _id:
             conn = DBManager()
             cursor = conn.connection.cursor()
-            query = 'SELECT idBBQ, name, model, photo, latitude, longitude, favorite FROM BBQ WHERE idBBQ = %s'
+            query = 'SELECT idBBQ, name, model, photo, latitude, longitude, favorite, placeId FROM BBQ WHERE idBBQ = %s'
             cursor.execute(query, (_id,))
             firstBBQ = cursor.fetchone()
             if firstBBQ:
                 bbq = BBQ(firstBBQ['idBBQ'], firstBBQ['name'], firstBBQ['model'], firstBBQ['photo'],
-                          firstBBQ['latitude'], firstBBQ['longitude'], bool(firstBBQ['favorite']))
+                          firstBBQ['latitude'], firstBBQ['longitude'], bool(firstBBQ['favorite']), firstBBQ['placeId'])
                 return bbq
             return firstBBQ
         return None
@@ -47,13 +47,13 @@ class BBQDAO(DAO):
     def readALL(self):
         conn = DBManager()
         cursor = conn.connection.cursor()
-        query = 'SELECT idBBQ, name, model, photo, latitude, longitude, favorite FROM BBQ'
+        query = 'SELECT idBBQ, name, model, photo, latitude, longitude, favorite, placeId FROM BBQ'
         cursor.execute(query)
         bbqs = cursor.fetchall()
         if bbqs:
             return [
                 BBQ(bbq['idBBQ'], bbq['name'], bbq['model'], bbq['photo'],
-                    bbq['latitude'], bbq['longitude'], bool(bbq['favorite'])).json()
+                    bbq['latitude'], bbq['longitude'], bool(bbq['favorite']), bbq['placeId']).json()
                 for bbq in bbqs
             ]
         return []

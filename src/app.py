@@ -35,7 +35,9 @@ if __name__ == '__main__':
             'name': identity.name,
             'lastName': identity.lastName,
             'id': identity.id,
-            'email': identity.email
+            'email': identity.email,
+            'latitude': identity.latitude,
+            'longitude': identity.longitude
         }))
     api.add_resource(UserResources, '/user', '/user/<id>', endpoint='user')
     api.add_resource(BBQResources, '/bbq', '/bbq/<id>', endpoint='bbq')
