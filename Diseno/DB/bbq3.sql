@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.23, for Linux (x86_64)
 --
--- Host: 127.0.0.1    Database: mydb
+-- Host: localhost    Database: mydb
 -- ------------------------------------------------------
 -- Server version	5.7.23-0ubuntu0.18.04.1
 
@@ -32,7 +32,7 @@ CREATE TABLE `BBQ` (
   `favorite` tinyint(1) NOT NULL,
   `placeId` longtext NOT NULL,
   PRIMARY KEY (`idBBQ`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,6 @@ CREATE TABLE `BBQ` (
 
 LOCK TABLES `BBQ` WRITE;
 /*!40000 ALTER TABLE `BBQ` DISABLE KEYS */;
-INSERT INTO `BBQ` VALUES (4,'Grill-Service-Center','Infrared grills','',51.7017,7.82422,0,'ChIJj1RcvT50uUcRSGGuRYYZep0');
 /*!40000 ALTER TABLE `BBQ` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +68,6 @@ CREATE TABLE `Rent` (
 
 LOCK TABLES `Rent` WRITE;
 /*!40000 ALTER TABLE `Rent` DISABLE KEYS */;
-INSERT INTO `Rent` VALUES (2,4);
 /*!40000 ALTER TABLE `Rent` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +88,7 @@ CREATE TABLE `User` (
   `latitude` float NOT NULL,
   `longitude` float NOT NULL,
   PRIMARY KEY (`idUser`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +97,6 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES (2,'efrain','perez',22,'efra@gmail.com','90a3ed9e32b2aaf4c61c410eb925426119e1a9dc53d4286ade99a809',8.9496,-79.6608),(3,'test','test',22,'test@gmail.com','90a3ed9e32b2aaf4c61c410eb925426119e1a9dc53d4286ade99a809',8.95061,-79.6556);
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,59 +107,6 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'mydb'
 --
-/*!50003 DROP PROCEDURE IF EXISTS `deleteRent` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `deleteRent`(IN idBbq INT, IN idUser INT)
-BEGIN
-	DELETE FROM Rent WHERE BBQ_idBBQ = idBbq AND User_idUser = idUser;
-    DELETE FROM BBQ WHERE idBBQ = idBbq;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `getUserRents` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `getUserRents`(In id INT)
-BEGIN
-SELECT 
-        `mydb`.`BBQ`.`idBBQ` AS `idBBQ`,
-        `mydb`.`BBQ`.`name` AS `name`,
-        `mydb`.`BBQ`.`favorite` AS `favorite`,
-        `mydb`.`BBQ`.`latitude` AS `latitude`,
-        `mydb`.`BBQ`.`longitude` AS `longitude`,
-        `mydb`.`BBQ`.`model` AS `model`,
-        `mydb`.`BBQ`.`photo` AS `photo`,
-        `mydb`.`BBQ`.`placeId` AS `placeId`
-    FROM
-        ((`mydb`.`User`
-        JOIN `mydb`.`Rent` ON ((`mydb`.`User`.`idUser` = `mydb`.`Rent`.`User_idUser`)))
-        JOIN `mydb`.`BBQ` ON ((`mydb`.`BBQ`.`idBBQ` = `mydb`.`Rent`.`BBQ_idBBQ`)))
-	WHERE User.idUser = id;
-
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `rentBBQ` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -194,4 +138,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-09-30  3:53:47
+-- Dump completed on 2018-09-24  1:43:03
