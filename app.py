@@ -4,7 +4,7 @@ from flask_jwt import JWT, timedelta
 from flask_cors import CORS
 
 # Resources
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='/static')
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
