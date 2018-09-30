@@ -1,11 +1,9 @@
-import app as app
 import pymysql
-
-database_name = app.app.config.get('DATABASE_NAME')
-database_host = app.app.config.get('DATABASE_HOST')
-database_port = app.app.config.get('DATABASE_PORT')
-database_username = app.app.config.get('DATABASE_USERNAME')
-database_password = app.app.config.get('DATABASE_PASSWORD')
+database_name = "heroku_65d1aa2fb6c88c0"
+database_host = "us-cdbr-iron-east-01.cleardb.net"
+database_port = 3306
+database_username = "bf5d98fb7a8b73"
+database_password = "f2e32801"
 
 
 class DBManager(object):
