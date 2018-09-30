@@ -23,8 +23,7 @@ class BBQDAO(DAO):
         if _id:
             conn = DBManager()
             cursor = conn.connection.cursor()
-            query = 'DELETE FROM Rent WHERE BBQ_idBBQ = %s AND User_idUser = %s'
-            response = cursor.execute(query, (_id, current_identity.id))
+            response = cursor.callproc('deleteRent', (_id, current_identity.id))
             if response:
                 conn.connection.commit()
                 deleted = True
@@ -47,8 +46,7 @@ class BBQDAO(DAO):
     def readALL(self):
         conn = DBManager()
         cursor = conn.connection.cursor()
-        query = 'SELECT idBBQ, name, model, photo, latitude, longitude, favorite, placeId FROM BBQ'
-        cursor.execute(query)
+        cursor.callproc('getUserRents', (current_identity.id,))
         bbqs = cursor.fetchall()
         if bbqs:
             return [

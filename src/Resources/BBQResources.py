@@ -23,7 +23,8 @@ class BBQResources(Resource):
 
         else:
             users = bbqDAO.readALL()
-            message = 'BQQs do not exist'
+            message = 'There is not a single bbq...'
+            status = 404
             data = users
             if len(users) > 0:
                 message = 'Users exist'
@@ -160,7 +161,7 @@ class BBQResources(Resource):
     def delete(self, id):
         message = 'BBQ does not exist to delete'
         status = 400
-        if id.isdigit() and current_identity.id == int(id):
+        if id.isdigit():
             from DataLayer.DataAccessObject.IDAO.BBQDAO import BBQDAO
             bbqDAO = BBQDAO()
             if bbqDAO.delete(id):
