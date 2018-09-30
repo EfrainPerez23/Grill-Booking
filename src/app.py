@@ -1,10 +1,11 @@
 from flask import Flask, jsonify
 from flask_restful import Api
 from flask_jwt import JWT, timedelta
-
+from flask_cors import CORS
 
 # Resources
 app = Flask(__name__)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 # Init of token security
