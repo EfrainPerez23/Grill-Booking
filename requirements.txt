@@ -12,3 +12,4 @@ PyJWT
 
 pymysql
 datetime
+uwsgi
