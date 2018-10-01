@@ -159,20 +159,39 @@ class UserResources(Resource):
                 '_required': True,
                 '_help': _help
             },
+            {
+                'key': 'oldPassword',
+                '_type': str,
+                '_required': True,
+                '_help': _help
+            },
+            {
+                'key': 'newPassword',
+                '_type': str,
+                '_required': True,
+                '_help': _help
+            }
 
         ])
-        message = 'Not allowed'
-        status = 405
-        if current_identity.id == data['id']:
-            userToUpdate = User(data['id'], data['name'], data['lastName'], data['age'], data['email'], None,
-                                data['latitude'], data['longitude'])
 
-            userDAO = UserDAO()
-            status = 400
-            if userDAO.update(userToUpdate):
-                message = 'User updated'
-                status = 201
+        transaction = Transactions()
+        if transaction.checkOldPassword(current_identity.id, data['oldPassword']):
+            message = 'Not allowed'
+            status = 405
+            if current_identity.id == data['id']:
+                userToUpdate = User(data['id'], data['name'], data['lastName'], data['age'], data['email'], data['newPassword'],
+                                    data['latitude'], data['longitude'])
 
+                userDAO = UserDAO()
+                status = 400
+                if userDAO.update(userToUpdate):
+                    message = 'User updated'
+                    status = 201
+        else:
+            message = 'Invalid password'
+            status = 401
+        del data['newPassword'];
+        del data['oldPassword'];
         return {'message': message, 'data': data}, status
 
     @jwt_required()
