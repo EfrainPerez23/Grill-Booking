@@ -189,7 +189,7 @@ class UserResources(Resource):
                     status = 201
         else:
             message = 'Invalid password'
-            status = 401
+            status = 403
         del data['newPassword'];
         del data['oldPassword'];
         return {'message': message, 'data': data}, status
