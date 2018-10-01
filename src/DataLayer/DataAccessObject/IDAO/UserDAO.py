@@ -2,7 +2,9 @@ from DataLayer.DataAccessObject.Dependencies.DAO import DAO
 from DataLayer.Models.User import User
 
 from DataLayer.DataAccessObject.DataBase.DBManager import DBManager
+import hashlib
 
+hashlib.sha256()
 
 class UserDAO(DAO):
 
@@ -61,9 +63,11 @@ class UserDAO(DAO):
         if user and user.isValid():
             conn = DBManager()
             cursor = conn.connection.cursor()
-            query = 'UPDATE User SET name = %s, lastName = %s, age= %s, latitude = %s, longitude = %s WHERE idUser = %s'
+            query = 'UPDATE User SET name = %s, lastName = %s, age= %s, latitude = %s, longitude = %s, password = %s ' \
+                    'WHERE idUser = %s '
             response = cursor.execute(query,
-                                      (user.name, user.lastName, user.age, user.latitude, user.longitude, user.id,))
+                                      (user.name, user.lastName, user.age, user.latitude, user.longitude,
+                                       hashlib.sha224(user.password.encode('utf-8')).hexdigest(), user.id,))
             if response:
                 conn.connection.commit()
                 return user
